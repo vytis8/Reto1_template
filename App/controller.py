@@ -108,7 +108,6 @@ def loadData (catalog):
     estructura de datos
     """
     loadMovies(catalog)
-    print("long movies",len(catalog['movies']))
     sort.sort(catalog['movies'],compareratings)
     loadDirectors(catalog)
     loadActors(catalog)
