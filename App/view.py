@@ -40,6 +40,7 @@ def printMenu():
     print("2- Peliculas con mejores votaciones")
     print("3- Peliculas por Director")
     print("4- Requerimiento 2 ... etc")
+    print("5- Películas con peores votaciones")
     print("0- Salir")
 
 
@@ -62,6 +63,17 @@ def printBestMovies (movies):
     size = lt.size(movies)
     if size:
         print (' Estas son las mejores peliculas: ')
+        iterator = it.newIterator(movies)
+        while  it.hasNext(iterator):
+            movie = it.next(iterator)
+            print ('Titulo: ' + movie['original_title'] + '  Fecha: ' + movie['release_date'] + ' Rating: ' + movie['vote_average'])
+    else:
+        print ('No se encontraron peliculas')
+
+def printWorseMovies (movies):
+    size = lt.size(movies)
+    if size:
+        print (' Estas son las peores peliculas: ')
         iterator = it.newIterator(movies)
         while  it.hasNext(iterator):
             movie = it.next(iterator)
@@ -94,6 +106,11 @@ while True:
         dir_name = input("Nombre del director a buscar: ")
         movies = controller.getMoviesByDirector (catalog, dir_name)
         print(movies)
+
+    elif int(inputs[0])==5:
+        number = input ("Buscando las peores ?: ")
+        movies = controller.getWorseMovies (catalog, int(number))
+        printWorseMovies (movies)
 
 
     elif int(inputs[0])==4:
